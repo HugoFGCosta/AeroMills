@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "T0fufg4fMGKZbt7Dh9cmXiyr8v/V27dKuwg4qSoE5XTYXqC+TMj/fDAxf0/yMZn/JE/1/+NE/JDnR84wzT0TvA==",
+  "success": true,
+  "projectFilePath": "D:\\ATEC\\Desenvolvimento\\A decorrer\\5089 - C#\\AeroMils\\AeroMils\\AeroMils.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}
