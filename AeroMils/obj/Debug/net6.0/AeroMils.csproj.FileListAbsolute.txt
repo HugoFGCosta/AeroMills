@@ -12,3 +12,18 @@ D:\ATEC\Desenvolvimento\A decorrer\5089 - C#\AeroMils\AeroMils\obj\Debug\net6.0\
 D:\ATEC\Desenvolvimento\A decorrer\5089 - C#\AeroMils\AeroMils\obj\Debug\net6.0\AeroMils.pdb
 D:\ATEC\Desenvolvimento\A decorrer\5089 - C#\AeroMils\AeroMils\obj\Debug\net6.0\AeroMils.genruntimeconfig.cache
 D:\ATEC\Desenvolvimento\A decorrer\5089 - C#\AeroMils\AeroMils\obj\Debug\net6.0\ref\AeroMils.dll
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\bin\Debug\net6.0\AeroMils.exe
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\bin\Debug\net6.0\AeroMils.deps.json
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\bin\Debug\net6.0\AeroMils.runtimeconfig.json
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\bin\Debug\net6.0\AeroMils.dll
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\bin\Debug\net6.0\AeroMils.pdb
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.AssemblyInfoInputs.cache
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.AssemblyInfo.cs
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.csproj.CoreCompileInputs.cache
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.sourcelink.json
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.dll
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\refint\AeroMils.dll
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.pdb
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.genruntimeconfig.cache
+C:\Users\hugoc\Documents\GitHub\AeroMills\AeroMils\obj\Debug\net6.0\ref\AeroMils.dll

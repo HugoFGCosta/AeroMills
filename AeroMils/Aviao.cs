@@ -12,7 +12,7 @@ namespace AeroMils
         private int _id;
         private string _marca;
         private string _modelo;
-        private bool _estado = false;
+        private bool _estado = true;
         private int _qtdMotores;
         private int _capacidadePassageiros;
         private double _autonomiaVoo;
@@ -25,6 +25,7 @@ namespace AeroMils
         private int _numProprietarios;
         private double _capacidadeCarga;
         private string _dataFabrico;
+        private bool _fretado = false;
 
         public int Id
         {
@@ -106,6 +107,11 @@ namespace AeroMils
             get => _dataFabrico;
             set => _dataFabrico = value;
         }
+        public bool Fretado
+        {
+            get => _fretado;
+            set => _fretado = value;
+        }
 
 
         public Aviao()
@@ -126,6 +132,7 @@ namespace AeroMils
             this._numProprietarios = 0;
             this._capacidadeCarga = 0;
             this._dataFabrico = "";
+            this._fretado = false;
         }
 
         public Aviao(int id, string modelo, int capacidadePassageiros, double autonomiaVoo, string dataUltManutencao, double areaDescolagem, double areaPouso, double valorFrete, int numVoosDiarios, string companhiaAerea, int numProprietarios, double capacidadeCarga, bool estado, int qtdMotores, string marca, string dataFabrico)
@@ -146,6 +153,7 @@ namespace AeroMils
             this._numProprietarios = numProprietarios;
             this._capacidadeCarga = capacidadeCarga;
             this._dataFabrico = dataFabrico;
+            this._fretado = false;
         }
         
         public void lerDadosAviao(int ultimoId)
@@ -185,8 +193,6 @@ namespace AeroMils
             _capacidadeCarga = Convert.ToDouble(Console.ReadLine());
             Console.Write("Data de Fabrico: ");
             _dataFabrico = Console.ReadLine();
-
-
         }
 
         public void MostrarDadosAviao()
@@ -207,15 +213,15 @@ namespace AeroMils
             Console.WriteLine($"Número de Proprietários: {_numProprietarios}");
             Console.WriteLine($"Capacidade de Carga: {_capacidadeCarga}");
             Console.WriteLine($"Data de Fabrico: {_dataFabrico}");
+            Console.WriteLine($"Fretado: {_fretado}");
         }
 
 
         public override string ToString()
         {
             
-            return $"{_id},{_marca},{_modelo},{_estado},{_qtdMotores},{_capacidadePassageiros},{_autonomiaVoo},{_dataUltManutencao},{_areaDescolagem},{_areaPouso},{_valorFrete},{_numVoosDiarios},{_companhiaAerea},{_numProprietarios},{_capacidadeCarga},{_dataFabrico}";
+            return $"{_id},{_marca},{_modelo},{_estado},{_qtdMotores},{_capacidadePassageiros},{_autonomiaVoo},{_dataUltManutencao},{_areaDescolagem},{_areaPouso},{_valorFrete},{_numVoosDiarios},{_companhiaAerea},{_numProprietarios},{_capacidadeCarga},{_dataFabrico},{_fretado}";
         }
-
     }
     
     

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AeroMils
@@ -11,10 +12,83 @@ namespace AeroMils
 
     internal class Empresa
     {
-        
+    #region validacoes
+        //reserva de avião
+        //verifica nome válido
+        public static bool verificaNome(string nome)
+        {
+            if (nome.Length > 2)
+            {
+                for (int i = 0; i < nome.Length; i++)
+                {
+                    if (!char.IsDigit(nome[i]))
+                    {
+                        return true;
+                    }
+                }
+            }
+                return false;
+        }
+
+        //verifica email válido
+        private static bool verificaEmail(string email)
+        {
+            string regex = @"^[^@\s]+@[^@\s]+\.(pt|com|net|org|gov)$";
+
+            return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
+        }
+
+        //verifica id válido e já existente
+        public static bool verificaId(string id, List<Aviao> listaAvioes)
+        {
+
+            if (int.TryParse(id, out int i))
+            {
+                foreach (var aviao in listaAvioes)
+                {
+                    if (aviao.Id == Convert.ToInt32(id))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        //verifica data de levantamento válida 
+        public static bool verificaData(string data)
+        {
+            DateTime dt;
+            if (DateTime.TryParseExact(data, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
+            {
+                if (dt >= DateTime.Today)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //verifica data de entrega válida
+        public static bool verificaDataEntrega(string data, string dataInicial)
+        {
+            DateTime dt;
+            DateTime dtInicial = ConvertToDate(dataInicial);
+            if (DateTime.TryParseExact(data, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
+            {
+                if (dt > dtInicial)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        #endregion validacoes
+
         public static DateTime ConvertToDate(string date)
         {
-            //nao esta a funcionar faz la de novo
             DateTime dt = DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             return dt;
         }
@@ -106,6 +180,7 @@ namespace AeroMils
                         aviao.NumProprietarios = Convert.ToInt32(fields[13]);
                         aviao.CapacidadeCarga = Convert.ToDouble(fields[14]);
                         aviao.DataFabrico = fields[15];
+                        aviao.Fretado = Convert.ToBoolean(fields[16]);
                         _listaAvioes.Add(aviao);
                     }
                 }else if (nomeFicheiro == "reservas.csv")
@@ -114,14 +189,26 @@ namespace AeroMils
                     foreach (string line in lines)
                     {
                         string[] fields = line.Split(',');
-                        string[] reserva = new string[6];
+                        string[] reserva = new string[8];
                         reserva[0] = fields[0];
                         reserva[1] = fields[1];
                         reserva[2] = fields[2];
                         reserva[3] = fields[3];
                         reserva[4] = fields[4];
                         reserva[5] = fields[5];
+                        reserva[6] = fields[6];
+                        reserva[7] = fields[7];
+
+                        for (int i = 0; i < _listaAvioes.Count; i++)
+                        {
+                            if (_listaAvioes[i].Id == Convert.ToInt32(reserva[3]))
+                            {
+                                _listaAvioes[i].Fretado = true;
+                            }
+                        }
+
                         _listaReservas.Add(reserva);
+
                     }
                 }
                 
@@ -176,15 +263,58 @@ namespace AeroMils
 
             string[] reserva = new string[8];
             Console.Write("Insira o seu nome: ");
-            reserva[1] = Console.ReadLine();
+            do
+            {
+                reserva[1] = Console.ReadLine();
+                if (!verificaNome(reserva[1]))
+                {
+                    Console.Write("Nome inválido. Insira novamente: ");
+                }
+            } while (!verificaNome(reserva[1]));
+
             Console.Write("Insira o seu email: ");
-            reserva[2] = Console.ReadLine();
+            do
+            {
+                reserva[2] = Console.ReadLine();
+                if (!verificaEmail(reserva[2]))
+                {
+                    Console.Write("Email inválido! Insira novamente: ");
+                }
+            } while (!verificaEmail(reserva[2]));
+
             Console.Write("Insira o ID do avião que pretende reservar: ");
-            reserva[3] = Console.ReadLine();
-            Console.Write("Insira a Data Inicial do Frete: ");
-            reserva[4] = Console.ReadLine();
-            Console.Write("Insira a Data Final do Frete: ");
-            reserva[5] = Console.ReadLine();
+
+            do
+            {
+                reserva[3] = Console.ReadLine();
+                if (!verificaId(reserva[3], _listaAvioes))
+                {
+                    Console.Write("ID inválido! Insira novamente: ");
+                }
+            } while (!verificaId(reserva[3], _listaAvioes));
+
+            Console.Write("Insira a Data Inicial do Frete (dd/mm/aaaa): ");
+            do
+            {
+                reserva[4] = Console.ReadLine();
+                if (!verificaData(reserva[4]))
+                {
+                    Console.Write("Data inválida! Insira novamente: ");
+                }
+            } while (!verificaData(reserva[4]));
+
+            Console.Write("Insira a Data Final do Frete (dd/mm/aaaa): ");
+            do
+            {
+                reserva[5] = Console.ReadLine();
+                if (!verificaDataEntrega(reserva[5], reserva[4]))
+                {
+                    Console.Write("Data inválida! Insira novamente: ");
+                }
+            } while (!verificaDataEntrega(reserva[5], reserva[4]));
+
+            _listaAvioes[Convert.ToInt32(reserva[3]) - 1].Fretado = true;
+
             _contaReservas++;
             reserva[0] = _contaReservas.ToString();
             
@@ -226,13 +356,22 @@ namespace AeroMils
             Console.WriteLine("---------------------------------------------------------------------");
             Console.WriteLine($"                          Aviões Disponíveis                        ");
             Console.WriteLine("---------------------------------------------------------------------");
-            Console.WriteLine($"{"ID",-4} | {"Marca",-20} | {"Modelo",-20} | {"Valor do Frete",-15}");
+            Console.WriteLine($"{"ID",-4} | {"Marca",-20} | {"Modelo",-20} | {"Valor do Frete",-15} | {"Data de Disponibilidade"}");
 
+            string dataDisponivel = "";
             foreach (var aviao in _listaAvioes)
             {
                 if (aviao.Estado == true)
                 {
-                    Console.WriteLine($"{aviao.Id,-4} | {aviao.Marca,-20} | {aviao.Modelo,-20} | {aviao.ValorFrete,-15}");
+                    foreach (var reserva in _listaReservas)
+                    {
+                        if (aviao.Id == Convert.ToInt32(reserva[3]))
+                        {
+                            dataDisponivel = reserva[5];
+                        }
+                    }
+                    Console.WriteLine($"{aviao.Id,-4} | {aviao.Marca,-20} | {aviao.Modelo,-20} | {aviao.ValorFrete,-15} | {dataDisponivel}");
+                    
                 }
             }
         }
@@ -246,7 +385,7 @@ namespace AeroMils
             {
                 foreach (var aviao in _listaAvioes)
                 {
-                    if (reserva[3] == aviao.Id.ToString())
+                    if (aviao.Fretado == true && aviao.Id == Convert.ToInt32(reserva[3]))
                     {
                         Console.WriteLine($"ID: {aviao.Id}");
                         Console.WriteLine($"Marca: {aviao.Marca}");
@@ -283,6 +422,8 @@ namespace AeroMils
             }
         }
 
+
+
         public void pagarReserva(string id)
         {
             foreach (var reserva in _listaReservas)
@@ -317,9 +458,6 @@ namespace AeroMils
                 }
             }
         }
-
-
-
     }
 
 }
