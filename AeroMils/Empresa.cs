@@ -166,7 +166,7 @@ namespace AeroMils
 
         private static bool verificaInteiro(string numero)
         {
-            if (int.TryParse(numero, out int result) && result >= 0)
+            if (int.TryParse(numero, out int result) && result > 0)
             {
                 return true;
             }
@@ -176,6 +176,16 @@ namespace AeroMils
             return false;
         }
 
+        private static bool verificaMinPista(string numero)
+        {
+            if(double.TryParse(numero, out double result) && result >= 1800)
+            {
+                return true;
+            }
+            Console.WriteLine("Erro: Tamanho errado. O tamanho mínimo para descolagem é de 1800 metros.");
+            Console.Write("Insira novamente: ");
+            return false;   
+        }
         private static bool verificaDouble(string numero)
         {
             if (double.TryParse(numero, out double result) && result >= 0 && Math.Round(result, 2) == result)
@@ -223,6 +233,8 @@ namespace AeroMils
 
             return true;
         }
+
+
 
         #endregion validacoes
 
@@ -348,7 +360,7 @@ namespace AeroMils
             do
             {
                 areaDescolagem = Console.ReadLine();
-            } while (!verificaDouble(areaDescolagem));
+            } while (!verificaMinPista(areaDescolagem));
             novoAviao.AreaDescolagem = Convert.ToDouble(areaDescolagem);
 
             Console.Write("Area de Pouso (m^2): ");
@@ -356,7 +368,7 @@ namespace AeroMils
             do
             {
                 areaPouso = Console.ReadLine();
-            } while (!verificaDouble(areaPouso));
+            } while (!verificaMinPista(areaPouso));
             novoAviao.AreaPouso = Convert.ToDouble(areaPouso);
 
             Console.Write("Valor do Frete (eur): ");

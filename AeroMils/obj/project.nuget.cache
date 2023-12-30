@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "bXXp9eL0C2JEbEZM68pTmDFkVMkiOoYZmDJMpM7TA/u0DM+xMJXUNoC0RVoOJQuk2h0cSbs7JtI7khq/hbXkhw==",
+  "dgSpecHash": "pN9yvBpcax9EDFD82Vj1/PLAbN2ewdsCdGwx/8xtaps9vRwP86+HS2YIhJpIi6My8TkMcqDT0cxJ8ea+zSeHBQ==",
   "success": true,
-  "projectFilePath": "D:\\ATEC\\Desenvolvimento\\A decorrer\\5089 - C#\\AeroMills\\AeroMils\\AeroMils.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\hfgco\\Documents\\Aulas\\Projetos Github\\AeroMills\\AeroMils\\AeroMils.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hfgco\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\hfgco\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\hfgco\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\hfgco\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
   "logs": []
 }
