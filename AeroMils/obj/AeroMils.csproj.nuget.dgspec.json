@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hugoc\\Documents\\GitHub\\AeroMills\\AeroMils\\AeroMils.csproj": {}
+    "D:\\ATEC\\Desenvolvimento\\A decorrer\\5089 - C#\\AeroMills\\AeroMils\\AeroMils.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hugoc\\Documents\\GitHub\\AeroMills\\AeroMils\\AeroMils.csproj": {
+    "D:\\ATEC\\Desenvolvimento\\A decorrer\\5089 - C#\\AeroMills\\AeroMils\\AeroMils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hugoc\\Documents\\GitHub\\AeroMills\\AeroMils\\AeroMils.csproj",
+        "projectUniqueName": "D:\\ATEC\\Desenvolvimento\\A decorrer\\5089 - C#\\AeroMills\\AeroMils\\AeroMils.csproj",
         "projectName": "AeroMils",
-        "projectPath": "C:\\Users\\hugoc\\Documents\\GitHub\\AeroMills\\AeroMils\\AeroMils.csproj",
-        "packagesPath": "C:\\Users\\hugoc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hugoc\\Documents\\GitHub\\AeroMills\\AeroMils\\obj\\",
+        "projectPath": "D:\\ATEC\\Desenvolvimento\\A decorrer\\5089 - C#\\AeroMills\\AeroMils\\AeroMils.csproj",
+        "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
+        "outputPath": "D:\\ATEC\\Desenvolvimento\\A decorrer\\5089 - C#\\AeroMills\\AeroMils\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\hugoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

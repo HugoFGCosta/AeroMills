@@ -155,65 +155,33 @@ namespace AeroMils
             this._dataFabrico = dataFabrico;
             this._fretado = false;
         }
-        
-        public void lerDadosAviao(int ultimoId)
-        {
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine($"         Dados do Avião {ultimoId}            ");
-            Console.WriteLine("----------------------------------- \n");
-            
-            _id = ultimoId;
-            Console.Write("Marca: ");
-            _marca = Console.ReadLine();
-            Console.Write("Modelo: ");
-            _modelo = Console.ReadLine();
-            Console.Write("Estado (true - Ativo | false - Inativo): ");
-            _estado = Convert.ToBoolean(Console.ReadLine());
-            Console.Write("Quantidade de Motores: ");
-            _qtdMotores = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Capacidade de Passageiros: ");
-            _capacidadePassageiros = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Autonomia de Voo: ");
-            _autonomiaVoo = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Data da Última Manutenção: ");
-            _dataUltManutencao = Console.ReadLine();
-            Console.Write("Area de Descolagem: ");
-            _areaDescolagem = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Area de Pouso: ");
-            _areaPouso = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Valor do Frete: ");
-            _valorFrete = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Número de Voos Diários: ");
-            _numVoosDiarios = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Companhia Aerea: ");
-            _companhiaAerea = Console.ReadLine();
-            Console.Write("Número de Proprietarios: ");
-            _numProprietarios = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Capacidade de Carga: ");
-            _capacidadeCarga = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Data de Fabrico: ");
-            _dataFabrico = Console.ReadLine();
-        }
 
         public void MostrarDadosAviao()
         {
             Console.WriteLine($"ID: {_id}");
             Console.WriteLine($"Marca: {_marca}");
             Console.WriteLine($"Modelo: {_modelo}");
-            Console.WriteLine($"Estado: {_estado}");
+            if (Estado == true)
+            {
+                Console.WriteLine($"Estado: Ativo");
+            }
+            else
+            {
+                Console.WriteLine($"Estado: Inativo");
+            }
             Console.WriteLine($"Quantidade de Motores: {_qtdMotores}");
             Console.WriteLine($"Capacidade de Passageiros: {_capacidadePassageiros}");
-            Console.WriteLine($"Autonomia de Voo: {_autonomiaVoo}");
-            Console.WriteLine($"Data da Última Manutenção: {_dataUltManutencao}");
-            Console.WriteLine($"Área de Descolagem: {_areaDescolagem}");
-            Console.WriteLine($"Área de Pouso: {_areaPouso}");
-            Console.WriteLine($"Valor do Frete: {_valorFrete}");
+            Console.WriteLine($"Autonomia de Voo (horas): {_autonomiaVoo}");
+            Console.WriteLine($"Data da Última Manutenção (dd/mm/aaaa): {_dataUltManutencao}");
+            Console.WriteLine($"Área de Descolagem (m^2): {_areaDescolagem}");
+            Console.WriteLine($"Área de Pouso (m^2): {_areaPouso}");
+            Console.WriteLine($"Valor do Frete (€): {_valorFrete}");
             Console.WriteLine($"Número de Voos Diários: {_numVoosDiarios}");
             Console.WriteLine($"Companhia Aérea: {_companhiaAerea}");
             Console.WriteLine($"Número de Proprietários: {_numProprietarios}");
-            Console.WriteLine($"Capacidade de Carga: {_capacidadeCarga}");
-            Console.WriteLine($"Data de Fabrico: {_dataFabrico}");
-            Console.WriteLine($"Fretado: {_fretado}");
+            Console.WriteLine($"Capacidade de Carga (Kg): {_capacidadeCarga}");
+            Console.WriteLine($"Data de Fabrico (dd/mm/aaaa): {_dataFabrico}");
+            Console.WriteLine("------------------------------------------------");
         }
 
 
