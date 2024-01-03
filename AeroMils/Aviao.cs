@@ -135,12 +135,12 @@ namespace AeroMils
             this._fretado = false;
         }
 
-        public Aviao(int id, string modelo, int capacidadePassageiros, double autonomiaVoo, string dataUltManutencao, double areaDescolagem, double areaPouso, double valorFrete, int numVoosDiarios, string companhiaAerea, int numProprietarios, double capacidadeCarga, bool estado, int qtdMotores, string marca, string dataFabrico)
+        public Aviao(int id, string marca, string modelo, string estado, int qtdMotores, int capacidadePassageiros, int autonomiaVoo, string dataUltManutencao, double areaDescolagem, double areaPouso, double valorFrete, int numVoosDiarios, string companhiaAerea, int numProprietarios, double capacidadeCarga, string dataFabrico)
         {
             this._id = id;
             this._marca = marca;
             this._modelo = modelo;
-            this._estado = estado;
+            this._estado = Convert.ToBoolean(estado);
             this._qtdMotores = qtdMotores;
             this._capacidadePassageiros = capacidadePassageiros;
             this._autonomiaVoo = autonomiaVoo;

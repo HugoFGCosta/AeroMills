@@ -29,7 +29,7 @@ namespace AeroMils
                 return true;
             }
             Console.WriteLine("Erro: Data inválida!");
-            Console.Write("Insira novamente data: ");
+            Console.Write("Insira novamente a data inicial: ");
             return false;
         }
 
@@ -90,12 +90,12 @@ namespace AeroMils
             return false;
         }
 
+
         private bool verificaDataEntrega(string[] novaReserva)
         {
             DateTime dataInicial = ConvertToDate(novaReserva[4]);
             DateTime dataEntrega = ConvertToDate(novaReserva[5]);
 
-            // Verifica se as datas são futuras
             if (dataInicial.Date < DateTime.Today || dataEntrega.Date < DateTime.Today)
             {
                 Console.WriteLine("Erro: As datas devem ser iguais ou posteriores à data de hoje.");
@@ -103,7 +103,6 @@ namespace AeroMils
                 return false;
             }
 
-            // Certifica-se de que a data de entrega é posterior à data inicial
             if (dataEntrega < dataInicial)
             {
                 Console.WriteLine("Erro: A Data de entrega tem de ser superior à Data inicial.");
@@ -111,7 +110,6 @@ namespace AeroMils
                 return false;
             }
 
-            // Verifica se há conflitos de datas com reservas existentes do avião selecionado
             foreach (var reserva in _listaReservas)
             {
                 if (novaReserva[3] == reserva[3])
@@ -119,7 +117,6 @@ namespace AeroMils
                     DateTime reservaInicio = ConvertToDate(reserva[4]);
                     DateTime reservaFim = ConvertToDate(reserva[5]);
 
-                    // Verifica se já existem reservas nessas datas
                     if ((dataEntrega >= reservaInicio && dataEntrega <= reservaFim) || (dataInicial >= reservaInicio && dataInicial <= reservaFim))
                     {
                         Console.WriteLine("Erro: As Datas fornecidas já se encontram em uso.");
@@ -182,7 +179,7 @@ namespace AeroMils
             {
                 return true;
             }
-            Console.WriteLine("Erro: Tamanho errado. O tamanho mínimo para descolagem é de 1800 metros.");
+            Console.WriteLine("Erro: Tamanho errado. O tamanho mínimo para descolagem/pouso é de 1800 metros.");
             Console.Write("Insira novamente: ");
             return false;   
         }
@@ -224,7 +221,7 @@ namespace AeroMils
 
             DateTime dataFabricoDateTime = DateTime.ParseExact(dataFabrico, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            if (dataUltimaManutencaoDateTime > DateTime.Today || dataUltimaManutencaoDateTime <= dataFabricoDateTime)
+            if (dataUltimaManutencaoDateTime > DateTime.Today || dataUltimaManutencaoDateTime < dataFabricoDateTime)
             {
                 Console.WriteLine("Erro: A Data da Última Manutenção deve ser igual ou anterior à data de hoje e posterior à Data de Fabrico.");
                 Console.Write("Insira novamente a Data da Última Manutenção (dd/mm/aaaa): ");
@@ -234,9 +231,38 @@ namespace AeroMils
             return true;
         }
 
+        private bool verificaLucro(string dataInicial,string dataFinal)
+        {
+            DateTime dtInicial = ConvertToDate(dataInicial);
+            DateTime dtFinal = ConvertToDate(dataFinal);
+
+            if (dtFinal < dtInicial)
+            {
+                Console.WriteLine("Erro: A Data final deve ser igual ou superior á inicial.");
+                Console.Write("Insira novamente a data inicial: ");
+                return false;
+            }
+
+            foreach (var reserva in _listaReservas)
+            {
+                DateTime reservaInicial = ConvertToDate(reserva[4]);
+                DateTime reservaFinal = ConvertToDate(reserva[5]);
+
+                if (dtInicial <= reservaInicial && dtFinal >= reservaFinal)
+                {
+                    return true;
+                }
+            }
+
+            Console.WriteLine("Não existem reservas nas datas inseridas");
+            return false;
+
+        }
+
 
 
         #endregion validacoes
+
 
         public void mostrarReservasAviao(string idAviao)
         {
@@ -637,6 +663,7 @@ namespace AeroMils
             DateTime dataFinal = ConvertToDate(reserva[5]);
             TimeSpan diferenca = dataFinal - dataInicial;
             int dias = diferenca.Days;
+            dias += 1;
             double valorTotal = 0;
             foreach (var aviao in _listaAvioes)
             {
@@ -676,7 +703,7 @@ namespace AeroMils
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.WriteLine($"                          Aviões Disponíveis                                   ");
             Console.WriteLine("--------------------------------------------------------------------------------");
-            Console.WriteLine($"{"ID",-4} | {"Marca",-20} | {"Modelo",-20} | {"Valor do Frete (eur)",-15} ");
+            Console.WriteLine($"{"ID",-4} | {"Marca",-20} | {"Modelo",-20} | {"Valor do Frete p/ dia (eur)",-15} ");
 
             foreach (var aviao in _listaAvioes)
             {
@@ -792,6 +819,81 @@ namespace AeroMils
                     }
                 }
             }
+        }
+
+        public void mostrarLucroPorData()
+        {
+
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine($"         Lucro por Data           ");
+            Console.WriteLine("----------------------------------- ");
+            Console.WriteLine("Para regressar ao Menu Principal insira (0). \n");
+
+            if (_contaReservas <= 0)
+            {
+                Console.WriteLine("Não existe nenhuma reserva");
+                Console.WriteLine("\nA regressar ao Menu principal...");
+                System.Threading.Thread.Sleep(3000);
+                return;
+            }
+
+            double lucroTotal = 0; 
+            string dataInicial, dataFinal;
+
+            do
+            {
+                Console.Write("Insira a data inicial: ");
+                do
+                {
+                    
+                    dataInicial = Console.ReadLine();
+                    if (dataInicial == "0")
+                    {
+                        return;
+                    }
+                } while (!verificaData(dataInicial) || dataInicial == "0");
+
+                do
+                {
+                    Console.Write("Insira a data final: ");
+                    dataFinal = Console.ReadLine();
+                    if (dataFinal == "0")
+                    {
+                        return;
+                    }
+                } while (!verificaData(dataFinal) || dataFinal == "0");
+
+            } while (!verificaLucro(dataInicial, dataFinal));
+
+            DateTime dtInicial = ConvertToDate(dataInicial);
+            DateTime dtFinal = ConvertToDate(dataFinal);
+
+            DateTime dateDay = dtInicial;
+
+            while(dateDay <= dtFinal)
+            {
+                foreach (var reserva in _listaReservas)
+                {
+
+                    DateTime reservaInicial = ConvertToDate(reserva[4]);
+                    DateTime reservaFinal = ConvertToDate(reserva[5]);
+
+
+                    if (dateDay >= reservaInicial && dateDay <= reservaFinal)
+                    {
+                        lucroTotal += _listaAvioes[Convert.ToInt32(reserva[3]) - 1].ValorFrete;
+                    }
+                }
+
+                dateDay = dateDay.AddDays(1);
+            }
+
+            Console.WriteLine($"O lucro entre essas datas é: {lucroTotal}eur");
+
+            Console.WriteLine("\nPrima qualquer tecla para regressar ao Menu Principal! \n");
+            Console.ReadKey();
+
+
         }
     }
 

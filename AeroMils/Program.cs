@@ -13,6 +13,7 @@
             Console.WriteLine("3 - Mostrar Aviões Fretados (Hoje)");
             Console.WriteLine("4 - Reservar Avião");
             Console.WriteLine("5 - Mostrar todas as Reservas");
+            Console.WriteLine("6 - Consultar lucro entre datas");
             Console.WriteLine("0 - Guardar e Sair");
             Console.WriteLine("-----------------------------------");
 
@@ -24,11 +25,11 @@
                 Console.Write("Opção: ");
                 opcao = Console.ReadLine();
                 valid = int.TryParse(opcao, out i);
-                if (!valid || Convert.ToInt32(opcao) < 0 || Convert.ToInt32(opcao) > 5)
+                if (!valid || Convert.ToInt32(opcao) < 0 || Convert.ToInt32(opcao) > 6)
                 {
                     Console.WriteLine("Erro: Opção inválida.");
                 }
-            } while (!valid || Convert.ToInt32(opcao) < 0 || Convert.ToInt32(opcao) > 5);
+            } while (!valid || Convert.ToInt32(opcao) < 0 || Convert.ToInt32(opcao) > 6);
 
             switch (Convert.ToInt32(opcao))
             {
@@ -58,6 +59,10 @@
                     Console.WriteLine("\nPrima qualquer tecla para regressar ao Menu Principal! \n");
                     Console.ReadKey();
                     break;
+                case 6:
+                    Console.Clear();
+                    empresa.mostrarLucroPorData();
+                    break;
                 case 0:
                     empresa.escreverFicheiroCSV("avioes");
                     empresa.escreverFicheiroCSV("reservas");
@@ -72,6 +77,9 @@
 
         static void Main(string[] args)
         {
+            //Aviao aviao1 = new Aviao(1, "Boeing", "247", "True", 2, 10, 1500, "22/05/1994", 1800, 180001, 50, 1, "Bahiana", 1, 6190, "22/05/1993");
+            //Aviao aviao2 = new Aviao(2, "Boieng", "737", "True", 2, 142, 5000, "02/01/2024", 1800, 1800, 1000, 10, "Delta Air Lines", 1, 65317, "10/02/1968");
+
             empresa.carregarFicheiro("avioes");
             empresa.carregarFicheiro("reservas");
             mainMenu();

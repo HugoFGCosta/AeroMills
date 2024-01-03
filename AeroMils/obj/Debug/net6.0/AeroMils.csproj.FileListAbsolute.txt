@@ -57,3 +57,18 @@ C:\Users\hfgco\Documents\Aulas\Projetos Github\AeroMills\AeroMils\obj\Debug\net6
 C:\Users\hfgco\Documents\Aulas\Projetos Github\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.pdb
 C:\Users\hfgco\Documents\Aulas\Projetos Github\AeroMills\AeroMils\obj\Debug\net6.0\AeroMils.genruntimeconfig.cache
 C:\Users\hfgco\Documents\Aulas\Projetos Github\AeroMills\AeroMils\obj\Debug\net6.0\ref\AeroMils.dll
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\bin\Debug\net6.0\AeroMils.exe
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\bin\Debug\net6.0\AeroMils.deps.json
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\bin\Debug\net6.0\AeroMils.runtimeconfig.json
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\bin\Debug\net6.0\AeroMils.dll
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\bin\Debug\net6.0\AeroMils.pdb
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\AeroMils.csproj.AssemblyReference.cache
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\AeroMils.GeneratedMSBuildEditorConfig.editorconfig
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\AeroMils.AssemblyInfoInputs.cache
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\AeroMils.AssemblyInfo.cs
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\AeroMils.csproj.CoreCompileInputs.cache
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\AeroMils.dll
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\refint\AeroMils.dll
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\AeroMils.pdb
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\AeroMils.genruntimeconfig.cache
+E:\C#\AEROMILLS\AeroMills-main\AeroMils\obj\Debug\net6.0\ref\AeroMils.dll
